@@ -2,6 +2,8 @@ import UIKit
 import Firebase
 import SDWebImage
 
+//resimleri indirmek için SDWebImage tool unu kullanıyoruz.
+
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
