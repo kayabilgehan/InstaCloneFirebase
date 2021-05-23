@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,6 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        
+        //halihazırda login olmuş bir kullanıcı varsa uygulamanın default view controller'ını değiştirerek kullanıcıyı iç sayfalara atıyoruz
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil {
+            //Storyboard ı bul ve değişkene tanımla
+            let board = UIStoryboard(name: "Main", bundle: nil)
+            //hangi sayfayı açacaksan aşağıda o sayfayı bul
+            let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
+            //window kullanarak üstte bulduğun sayfayı aç
+            window?.rootViewController = tabBar
+        }
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
